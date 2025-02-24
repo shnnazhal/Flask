@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Персонажи Futurama</title>
+</head>
+<body>
+<h1>Список персонажей Futurama</h1>
+<ul>
+    {% for character in posts %}
+    <li>
+        <strong>Имя:</strong> {{ character.name }}<br>
+        <strong>Пол:</strong> {{ character.gender | default('Не указано') }}<br>
+        <strong>Статус:</strong> {{ character.status | default('Неизвестно') }}<br>
+        <strong>Вид:</strong> {{ character.species | default('Неизвестно') }}<br>
+        {% if character.image %}
+        <img src="{{ character.image }}" alt="{{ character.name }}" style="max-width: 200px;">
+        {% else %}
+        <p>[Изображение недоступно]</p>
+        {% endif %}
+    </li>
+    {% else %}
+    <p>Список персонажей пуст или данные недоступны.</p>
+    {% endfor %}
+</ul>
+</body>
+</html>
